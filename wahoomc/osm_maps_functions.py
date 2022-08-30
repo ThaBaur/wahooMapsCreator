@@ -81,14 +81,14 @@ def run_subprocess_and_log_output(cmd, error_message, cwd=""):
     run given cmd-subprocess and issue error message if wished
     """
     if not cwd:
-        with subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True) as process:
+        with subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) as process:
             for line in iter(process.stdout.readline, b''):  # b'\n'-separated lines
                 try:
                     log.debug('subprocess:%r', line.decode("utf-8").strip())
                 except UnicodeDecodeError:
                     log.debug('subprocess:%r', line.decode("latin-1").strip())
     else:
-        with subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=cwd, shell=True) as process:
+        with subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=cwd) as process:
             for line in iter(process.stdout.readline, b''):  # b'\n'-separated lines
                 try:
                     log.debug('subprocess:%r', line.decode("utf-8").strip())
