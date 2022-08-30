@@ -1,7 +1,7 @@
 """
 executable file to create up-to-date map-files for the Wahoo ELEMNT and Wahoo ELEMNT BOLT
 """
-#!/usr/bin/python
+# !/usr/bin/python
 
 # import official python packages
 import logging
@@ -11,6 +11,9 @@ from wahoomc.input import process_call_of_the_tool
 from wahoomc.setup_functions import initialize_work_directories
 from wahoomc.setup_functions import move_old_content_into_new_dirs
 from wahoomc.osm_maps_functions import OsmMaps
+
+log = logging.getLogger('main-logger')
+
 
 # logging used in the terminal output:
 # # means top-level command
@@ -34,7 +37,20 @@ def run():
 
     initialize_work_directories()
     move_old_content_into_new_dirs()
+    if o_input_data.multi_country is not None:
+        log.info("Processing Multiple Countries")
+        for country in o_input_data.multi_country:
+            log.info(f"Processing {country}")
+            process_country_input = o_input_data
+            process_country_input.multi_country = ""
+            process_country_input.country = country
+            process_input_data(process_country_input)
+    else:
+        log.info(f"Processing single country or tiles")
+        process_input_data(o_input_data)
 
+
+def process_input_data(o_input_data):
     o_osm_maps = OsmMaps(o_input_data)
 
     # Read json file

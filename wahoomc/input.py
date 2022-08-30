@@ -44,6 +44,11 @@ def process_call_of_the_tool():
     # country to create maps for
     primary_args_excl.add_argument(
         "-co", "--country", help="country to generate maps for")
+
+    # multiple countries as input
+    primary_args_excl.add_argument(
+        "-mco", "--multi_country", help="multiple countries to generate maps for")
+
     # X/Y coordinates to create maps for
     primary_args_excl.add_argument(
         "-xy", "--xy_coordinates", help="x/y coordinates to generate maps for. Example: 133/88")
@@ -99,6 +104,10 @@ def process_call_of_the_tool():
     o_input_data = InputData()
     o_input_data.country = args.country
     o_input_data.xy_coordinates = args.xy_coordinates
+    if args.multi_country is not None and args.multi_country != '':
+        o_input_data.multi_country = str(args.multi_country).split(",")
+    else:
+        o_input_data.multi_country = None
     o_input_data.max_days_old = args.maxdays
 
     o_input_data.process_border_countries = args.bordercountries
@@ -141,6 +150,7 @@ class InputData():  # pylint: disable=too-many-instance-attributes,too-few-publi
     def __init__(self):
         self.country = ""
         self.xy_coordinates = ""
+        self.multi_country = ""
         self.max_days_old = 14
 
         self.force_download = False
@@ -166,7 +176,7 @@ class InputData():  # pylint: disable=too-many-instance-attributes,too-few-publi
         - file with tile coordinates
         If not, depending on the import parameter, the
         """
-        if (self.country in ('None', '') and self.xy_coordinates in ('None', '')):
+        if self.country in ('None', '') and self.xy_coordinates in ('None', '') and self.multi_country in ('None', ''):
             if issue_message:
                 sys.exit("Nothing to do. Start with -h or --help to see command line options."
                          "Or in the GUI select a country to create maps for.")
