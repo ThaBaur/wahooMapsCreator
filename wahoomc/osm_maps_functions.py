@@ -386,12 +386,12 @@ class OsmMaps:
             if not os.path.isfile(out_file+'1.osm') or self.force_processing is True:
                 # Windows
                 if platform.system() == "Windows":
-                    cmd = ['python', os.path.join(RESOURCES_DIR,
+                    cmd = ['python3', os.path.join(RESOURCES_DIR,
                                                   'shape2osm.py'), '-l', out_file, land_file]
 
                 # Non-Windows
                 else:
-                    cmd = ['python', os.path.join(RESOURCES_DIR,
+                    cmd = ['python3', os.path.join(RESOURCES_DIR,
                                                   'shape2osm.py'), '-l', out_file, land_file]
 
                 run_subprocess_and_log_output(
