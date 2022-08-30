@@ -25,3 +25,6 @@ osmfilter_tempfile.*
 
 #windows
 /wahoomc/tooling_win/osmconvert_tempfile.*
+
+#PyCharm Project Folder
+.idea

@@ -69,7 +69,7 @@ def get_geofabrik_region_of_country(input_county):
         region = 'south-america'
     if c_translated in constants.germany_subregions_geofabrik:
         region = 'europe\\germany'
-    if c_translated in constants.noregion_geofabrik:
+    if c_translated in constants.noregion_geofabrik or c_translated in constants.geofabrik_regions:
         region = 'no'
     if region == '':
         log.error('! No Geofabrik region match for country: %s', c_translated)
