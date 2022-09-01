@@ -88,7 +88,7 @@ Translate_Country = {
     'south_carolina':                   'south-carolina',
     'north_dakota':                     'north-dakota',
     'south_dakota':                     'south-dakota',
-    'west_virginia':                    'west-virginia'
+    'west_virginia':                    'west-virginia',
 }
 
 continents = ['europe', 'unitedstates', 'north-america', 'south-america', 'asia', 'oceania',
@@ -195,7 +195,7 @@ europe_geofabrik = ['albania', 'andorra', 'austria', 'azores', 'belarus', 'belgi
                     'isle-of-man', 'italy', 'kosovo', 'latvia', 'liechtenstein', 'lithuania', 'luxembourg',
                     'macedonia', 'malta', 'moldova', 'monaco', 'montenegro', 'netherlands', 'norway',
                     'poland', 'portugal', 'romania', 'russian federation', 'serbia', 'slovakia',
-                    'slovenia', 'spain', 'sweden', 'switzerland', 'turkey', 'ukraine (with crimea)']
+                    'slovenia', 'spain', 'sweden', 'switzerland', 'turkey', 'ukraine']
 
 northamerica_geofabrik = ['canada', 'greenland', 'mexico', 'us midwest', 'us northeast',
                           'us pacific', 'us south', 'us west']
